@@ -1,0 +1,87 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title"> All Products</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+               
+            </ul>
+        </div>
+    </div>
+</section>
+            
+{% extends "admin/adminbase.html" %}
+{% block content%}
+<section class="w3l-team py-5" id="team">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <h3 class="title-big text-center mx-0 mb-lg-5 mb-4"> </h3>
+        <div class="row team-row">
+            {% for d in item %}
+            <div class="col-lg-4 col-sm-6 team-wrap">
+                <div class="team-member text-center">
+                    <div class="team-img">
+                        <img src="../static/media/{{d.image}}"  height="300" width="300"   />
+                        <div class="overlay">
+                            <div class="team-details text-center">
+                                <p>
+                                   Description : {{d.desc}}
+                                </p>
+                                <div class="socials mt-4">
+                                    <p>Price :{{d.price}}</p>
+                                    
+                                    <br>
+                                    <a href="/deleitem?id={{d.id}}">Delete </a><br>
+
+                                   
+                                    <a href="/update?id={{d.id}}">update</a>
+
+                                  
+                                    
+                                    
+                                    <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-envelope"></i></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="team-title">{{d.name}}</h6>
+                    <p></p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- end team member -->
+            <div class="col-lg-4 col-sm-6 team-wrap mt-sm-0 mt-5">
+                <div class="team-member text-center">
+                    {% for d in kitchen %}
+                    <div class="team-img">
+                        <img src="../static/media/{{d.image}}"   height="300" width="300"   />
+                        <div class="overlay">
+                            <div class="team-details text-center">
+                                <p>
+                                    Description : {{d.desc}}
+                                </p>
+                                <div class="socials mt-4">
+                                    <p>Price:{{d.price}}</p><br>
+                                    <a href="/delekit?id={{d.id}}">Delete
+
+                                    
+
+                                  
+                                    <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-envelope"></i></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="team-title">{{d.name}}</h6>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

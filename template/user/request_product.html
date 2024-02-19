@@ -1,0 +1,49 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title">  Request  Product  </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/userhome"> Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active"> Request Product </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "user/userbase.html" %}
+{% block content%}
+
+<section class="w3l-contact-7 pt-5" id="contact">
+    <div class="contacts-9 pt-lg-5 pt-md-4">
+        <div class="container">
+            <div class="top-map">
+                <div class="row map-content-9">
+                    <div class="col-lg-8">
+                       
+                        <form  method="post" class="text-right" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-grid">
+                                <input type="text" name="name" id="w3lSender" placeholder="Product Name" required="">
+                                <input type="file" name="image" id="w3lSubject" placeholder="Image">
+                                <input type="date" name="date" id="w3lSubject" placeholder="Date">
+                                
+
+                                
+                                
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-style mt-3" style="margin-right: 180px;">Request</button>
+                        </form>
+                    </div>
+                 
+</section>
+{% if messages %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+
+
+{% endfor %}
+{% endif %}
+{% endblock %}

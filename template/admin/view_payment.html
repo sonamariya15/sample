@@ -1,0 +1,63 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title"> View Payment  </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/adminhome"> Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active"> View Payment </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "admin/adminbase.html" %}
+{% block content %}
+
+<style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+    table th{
+        background: #f5f5f5;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a.hover{
+        text-decoration: underline;
+    }
+</style>
+<table>
+    <tr>
+        <th>Name</th>
+        <!-- <th>Product Name</th> -->
+        <th>Date</th>
+        <!-- <th>Address</th> -->
+        <th>Status</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        
+        <td>{{d.userid.name}}</td>
+        <!-- {% if d.deid == null %}
+        <td>{{d.kitid.name}}</td>
+        {% elif d.kitid == null %}
+        <td>{{d.deid.name}}</td>
+        {% endif %} -->
+        <td>{{d.current_date}}</td>
+        <!-- <td>{{d.desc}}</td> -->
+        <td>{{d.status}}</td>
+        
+       
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

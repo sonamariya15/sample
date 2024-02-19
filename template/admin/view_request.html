@@ -1,0 +1,91 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title"> View Request  </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/adminhome"> Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active"> View Request </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "admin/adminbase.html" %}
+{% block content %}
+
+<style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+    table th{
+        background: #f5f5f5;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a.hover{
+        text-decoration: underline;
+    }
+</style>
+<table class="table" >
+    
+    <tr>
+        <th> User Name</th>
+        <th>Product Name</th>
+        <th>Image</th>
+        <th>Date</th>
+        <th>Progress</th>
+        
+        <th colspan="2">Action</th>
+        
+        
+       
+        
+        
+    </tr>
+
+    {% for p in user %}
+
+<tr>
+    <td>{{p.userid.name}}</td>
+    <td>{{p.name}}</td>
+    <td><img src ="../static/media/{{p.image}}" height="100" width="100"></td>
+    <td>{{p.date}}</td>
+    <td>{{p.status}}</td>
+    {% if p.status == "request" %}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3"><a href="/accept?id={{p.id}}" style="color: aliceblue;">Accept</button></td>
+    {% elif p.status == "accept"%}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3" ><a href="/quarter?id={{p.id}}" style="color: aliceblue;">25%</button></td>
+    {% elif p.status == "25%"%}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3" ><a href="/half?id={{p.id}}" style="color: aliceblue;">50%</button></td>
+    {% elif p.status == "50%"%}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3"> <a href="/third?id={{p.id}}" style="color: aliceblue;">75%</button></td>
+    {% elif p.status == "75%"%}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3" ><a href="/complete?id={{p.id}}" style="color: aliceblue;">Complete</button></td>
+    {% endif %}
+    
+
+</tr>
+{% endfor %}
+</table>
+{% if messages %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+
+
+{% endfor %}
+{% endif %}
+
+
+</center>
+{% endblock %}

@@ -1,0 +1,76 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title">View Manage Request   </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/userhome"> Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active">View Manage Request </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "user/userbase.html" %}
+{% block content %}
+
+<style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+    table th{
+        background: #f5f5f5;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a.hover{
+        text-decoration: underline;
+    }
+</style>
+<table class="table" >
+    
+    <tr>
+        <th>Name</th>
+        <th>Product Name</th>
+        <th>Image</th>
+        <th>Date</th>
+        <th>Progress</th>
+        
+        <th colspan="2">Action</th>
+
+        
+        
+       
+        
+        
+    </tr>
+
+    {% for p in user %}
+
+<tr>
+    <td>{{p.userid.name}}</td>
+    <td>{{p.name}}</td>
+    <td><img src ="../static/media/{{p.image}}" height="100" width="100"></td>
+    <td>{{p.date}}</td>
+    <td>{{p.status}}</td>
+    {% if p.status == "complete" %}
+    <td><button type="button"  class="btn btn-primary btn-style mt-3" ><a href="/feedback?id={{p.id}}" style="color: aliceblue;">Feedback</a></button></td>
+    
+
+    {% endif %}
+       
+   
+</tr>
+{% endfor %}
+</table>
+
+</center>
+{% endblock %}

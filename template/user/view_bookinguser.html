@@ -1,0 +1,71 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title"> View Booking  </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/userhome"> Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active"> View Booking </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "user/userbase.html" %}
+{% block content %}
+
+<style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+    table th{
+        background: #f5f5f5;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a.hover{
+        text-decoration: underline;
+    }
+</style>
+<table>
+    <tr>
+        
+        <th>Product Name</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Address</th>
+        <th>Booking Status</th>
+        <th>Cancel Order</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        
+        
+        {% if d.deid == null %}
+        <td>{{d.kitid.name}}</td>
+        {% elif d.kitid == null %}
+        <td>{{d.deid.name}}</td>
+        {% endif %}
+        <td>{{d.date}}</td>
+        {% if d.deid == null %}
+        <td>{{d.kitid.price}}</td>
+        {% elif d.kitid == null %}
+        <td>{{d.deid.price}}</td>
+        {% endif %}
+        <td>{{d.desc}}</td>
+        <td>{{d.status}}</td>
+        <td><button type="button"  class="btn btn-primary btn-style mt-3" ><a href="/delebooking?id={{d.id}}" style="color: aliceblue;">Cancel</button></td>
+       
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

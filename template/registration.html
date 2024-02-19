@@ -1,0 +1,53 @@
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 pt-5 pb-4">
+        <div class="container pt-lg-5 pt-md-3 py-lg-4 pb-md-3">
+            <h2 class="title"> User Registration </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/">Home</a></li>
+                <li class="mx-2">/ </li>
+                <li class="active"> Registration </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% extends "base.html" %}
+{% block content%}
+
+<section class="w3l-contact-7 pt-5" id="contact">
+    <div class="contacts-9 pt-lg-5 pt-md-4">
+        <div class="container">
+            <div class="top-map">
+                <div class="row map-content-9">
+                    <div class="col-lg-8">
+                       
+                        <form  method="post" enctype="multipart/form-data" style="margin-left: 200px;" class="text-right">
+                            {% csrf_token %}
+                            <div class="form-grid" >
+                                <input type="text" name="name" id="w3lName" placeholder="Name*" required="">
+                               
+                                <input type="number" name="contact" id="w3lPhone" placeholder="Phone number*"
+                                    required="">
+                                <input type="email" name="email" id="w3lSender" placeholder="Email*" required="">
+                                <input type="file" name="profile" id="w3lPhone" placeholder="Profile"
+                                    required="">
+
+                                <input type="password" name="password" id="w3lSubject" placeholder="Password*">
+                            </div>
+                            <textarea name="address"  id="w3lMessage" placeholder="Address"></textarea>
+                            
+                            <button type="submit"  class="btn btn-primary btn-style mt-3" style="margin-right: 180px;">Register</button>
+                        </form>
+                    </div>
+                 
+</section>
+
+{% if messages %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+
+
+{% endfor %}
+{% endif %}
+{% endblock %}
